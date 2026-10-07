@@ -1,0 +1,21 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./demo_shop.db
+      - SECRET_KEY=change-me-to-a-long-random-string
+      - DEBUG=true
+    volumes:
+      - ./app:/code/app
+
+  # Swap in Postgres for something closer to a real deployment:
+  # db:
+  #   image: postgres:16
+  #   environment:
+  #     POSTGRES_USER: shop
+  #     POSTGRES_PASSWORD: shop
+  #     POSTGRES_DB: demo_shop
+  #   ports:
+  #     - "5432:5432"
